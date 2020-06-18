@@ -28,20 +28,20 @@ function fh_total_create_database_table(){
     // Crear el nombre de la tabla, con el mismo prefijo que ya tienen las otras tablas creadas en wp_form.
     $tblname = $wpdb->prefix . "fh_total";
     $tbuser = $wpdb->prefix . "users";
-    $charset_collate = $wpdb->get_charset_collate();
+    
     // Declarar la tabla del plugin.
-    $sql = /** @lang MySQL */
-        "CREATE TABLE  {$tblname}
-          ( id  int(11)   NOT NULL auto_increment,
-            user_id  int(128)   NOT NULL,
-            date date,
-            hour_start  time,
-            hour_finish time DEFAULT '00:00:00',
-            hours_total time DEFAULT '00:00:00',
-            CONSTRAINT PK_fh_total PRIMARY KEY (id),
-            CONSTRAINT FK_fh_total_users FOREIGN KEY (user_id)
-                    REFERENCES {$tbuser} (ID)
-                    ) CHARSET={$charset_collate}";
+   $sql = /** @lang MySQL */
+		"CREATE TABLE  {$tblname}
+		  ( id  int(11)   NOT NULL auto_increment,
+			user_id  int(128)   NOT NULL,
+			date date,
+			hour_start  time,
+			hour_finish time DEFAULT '00:00:00',
+			hours_total time DEFAULT '00:00:00',
+			CONSTRAINT PK_ch_destino PRIMARY KEY (id),
+			CONSTRAINT FK_ch_destino_users FOREIGN KEY (user_id)
+					REFERENCES {$tbuser} (ID)
+					) ENGINE=MyISAM AUTO_INCREMENT=1 ; ";
 
     // Upgrade contiene la función dbDelta que comprueba si existe la tabla.
 	
